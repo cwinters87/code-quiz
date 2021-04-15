@@ -6,6 +6,7 @@ header {
 
 header h1 {
     color: pink;
+    margin: 20px;
 }
 
 main {
