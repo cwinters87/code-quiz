@@ -7,6 +7,8 @@ const answerTwoEL = document.querySelector('#answer-two')
 const answerThreeEL = document.querySelector('#answer-three')
 const answerFourEL = document.querySelector('#answer-four')
 const startBtnEl = document.querySelector('#start-btn')
+const sectionEL = document.querySelector('#section')
+
 
 // time and score count
 let timeLeft = 60
@@ -29,7 +31,11 @@ function timerCountdown() {
 }
 
 
-
+var quiz =function() {
+    var questionOne = document.createElement("div")
+    questionOne.innerHTML = "this is a question?"
+    document.getElementById('section').appendChild(questionOne)
+}
 
 
 
@@ -39,29 +45,23 @@ function timerCountdown() {
 startBtnEl.addEventListener('click', e => {
     timerCountdown()
     startBtnEl.remove()
+    questionEl.remove()
+    quiz()
 })
 
 // answer event listeners
 answerOneEL.addEventListener('click', e => {
-    score++
-    hello()
-    console.log(score)
+    
 })
 
 answerTwoEL.addEventListener('click', e => {
-    score++
-    hello()
-    console.log(score)
+    
 })
 
 answerThreeEL.addEventListener('click', e => {
-    score++
-    hello()
-    console.log(score)
+    
 })
 
 answerFourEL.addEventListener('click', e => {
-    score++
-    hello()
-    console.log(score)
+    
 })  
