@@ -2,22 +2,28 @@
 const timeleftEl = document.querySelector('.countdown-timer')
 const startBtnEl = document.querySelector('#start-btn')
 const sectionEL = document.querySelector('#section')
+const mainEl = document.getElementById('container')
 
 
 // time and score count
-let timeLeft = 60
-let score = 0
+let timeLeft = 5
+var score = timeleftEl
 let rightOrWrong = ""
-
 
 // countdown timer function
 function timerCountdown() {
     var timeInterval = setInterval(function(){
     if (timeLeft >= 0) {
-            timeleftEl.textContent = timeLeft
+        timeleftEl.textContent = timeLeft
             timeLeft--
+        score = timeLeft.textContent
     }
-    else {clearInterval(timeInterval)}        
+    else {
+        clearInterval(timeInterval)
+        gameOver()        
+        var score = timeLeft + 1
+        console.log(score)   
+    }        
     },
     1000)
 }
@@ -80,7 +86,6 @@ var quizOne =function() {
 
     //right
     answerThree.addEventListener("click", e => {
-        score = score + 5
         rightOrWrong = "right!"
         section.remove()
         quizTwo()
@@ -159,7 +164,6 @@ var quizTwo =function() {
 
     //right
     answerThree.addEventListener("click", e => {
-        score = score + 5
         rightOrWrong = "Right!"
         section.remove()
         quizThree()
@@ -243,7 +247,6 @@ var quizThree =function() {
 
     //right
     answerFour.addEventListener("click", e => {
-        score = score + 5
         rightOrWrong = "Right!"
         section.remove()
         quizFour()
@@ -317,7 +320,6 @@ var quizFour =function() {
 
     //right
     answerThree.addEventListener("click", e => {
-        score = score + 5
         rightOrWrong = "Right!"
         section.remove()
         quizFive()
@@ -404,7 +406,6 @@ var quizFive =function() {
 
     //right
     answerFour.addEventListener("click", e => {
-        score = score + 5
         rightOrWrong = "Right!"        
         section.remove()
         gameOver()
@@ -413,9 +414,8 @@ var quizFive =function() {
 }
 
 // Game over function
-var gameOver = function(){
-    alert('game over')
-    console.log(score)
+var gameOver = function(){    
+    section.remove()
 }
 
 
