@@ -134,3 +134,7 @@ main section div p {
     background-color: black;
     border-radius: 5px;
 }
+
+button {
+    cursor: pointer;
+}

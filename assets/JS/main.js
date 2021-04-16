@@ -10,6 +10,8 @@ let timeLeft = 75
 let initials = ""
 let rightOrWrong = ""
 
+
+
 // countdown timer function
 
 timeObj = {
@@ -458,10 +460,10 @@ const gameOver = function(){
     document.getElementById('section').appendChild(bottom)
 
     inputBtnEl.addEventListener('click', e=> {
-        initials = document.getElementById('input-text').value
+        initials = document.getElementById('input-text').value        
         localStorage.setItem(initials, score)
         section.remove()
-        highScores()      
+        highScores()
     })    
 }
 
@@ -499,6 +501,12 @@ const highScores = function(){
     clearHighScores.className = "score-button"
     document.getElementById('button-div').appendChild(clearHighScores)
 
+    
+    var topScoresArr = Object.entries(localStorage)
+    console.log(topScoresArr)
+    let allScores = []
+    allScores.push(topScoresArr)
+    console.log(allScores)
 }
 
 
