@@ -7,7 +7,7 @@ const mainEl = document.getElementById('container')
 
 // time and score count
 let timeLeft = 75
-
+let initials = ""
 let rightOrWrong = ""
 
 // countdown timer function
@@ -95,7 +95,6 @@ var quizOne =function() {
         section.remove()
         quizTwo()
     })
-
 }
 
 
@@ -258,7 +257,6 @@ var quizThree =function() {
         section.remove()
         quizFour()
     })
-
 }
 
 // Question 4 function
@@ -305,7 +303,6 @@ var quizFour =function() {
     answerFour.className = "answer"
     answerFour.id = "answer-four"
     document.getElementById('answer-list').appendChild(answerFour)
-
 
     // Answer Clicks...
 
@@ -423,13 +420,14 @@ var quizFive =function() {
         section.remove()
         gameOver()
     })
-
 }
 
 // Game over function
 const gameOver = function(){ 
 
     timeLeft = timeLeft + 1
+    var finalTime = timeLeft
+    var score = finalTime.toString()
 
     var section = document.createElement('section')
     section.id = "section"
@@ -460,26 +458,33 @@ const gameOver = function(){
     enterInitialsEl.id = "enter-initials"
     document.getElementById('div-of-three').appendChild(enterInitialsEl)
 
-    var inputEl = document.createElement("input")    
+    var inputEl = document.createElement("input")
+    inputEl.type = "text"  
     inputEl.className = "input-score"
+    inputEl.maxLength = "3"
     inputEl.id = "input-text"
     document.getElementById('div-of-three').appendChild(inputEl)
 
     var inputBtnEl = document.createElement("button")
+    inputBtnEl.type = "button"
     inputBtnEl.innerHTML = "Submit"
     inputBtnEl.className = "input-score"
     inputBtnEl.id = "input-btn"
-    document.getElementById('div-of-three').appendChild(inputBtnEl)
+    document.getElementById('div-of-three').appendChild(inputBtnEl)      
 
     var bottom = document.createElement("div")
     bottom.innerHTML = rightOrWrong
     bottom.id = "bottom"
     document.getElementById('section').appendChild(bottom)
 
-    
-    
-    console.log(timeLeft)
+    inputBtnEl.addEventListener('click', e=> {
+        initials = document.getElementById('input-text').value
+        localStorage.setItem(initials, score)      
+    })    
 }
+
+
+
 
 
 
@@ -493,4 +498,3 @@ startBtnEl.addEventListener('click', e => {
     sectionEL.remove()
     quizOne()
 })
-
