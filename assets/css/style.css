@@ -121,3 +121,16 @@ main section div p {
     background-color: black;
     border-radius: 5px;
 }
+
+#button-div {
+    display: flex;
+}
+
+.score-button{
+    font-size: 25px;
+    padding: 0px 10px;
+    margin: 10px 20px 0px 0px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+}

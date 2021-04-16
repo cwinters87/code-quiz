@@ -42,25 +42,21 @@ var quizOne =function() {
     var answerOne = document.createElement("button")
     answerOne.innerHTML = "1. strings"
     answerOne.className = "answer"
-    answerOne.id = "answer-one"
     document.getElementById('answer-list').appendChild(answerOne)
 
     var answerTwo = document.createElement("button")
     answerTwo.innerHTML = "2. booleans"
     answerTwo.className = "answer"
-    answerTwo.id = "answer-two"
     document.getElementById('answer-list').appendChild(answerTwo)
 
     var answerThree = document.createElement("button")
     answerThree.innerHTML = "3. alerts"
     answerThree.className = "answer"
-    answerThree.id = "answer-three"
     document.getElementById('answer-list').appendChild(answerThree)
 
     var answerFour = document.createElement("button")
     answerFour.innerHTML = "4. numbers"
     answerFour.className = "answer"
-    answerFour.id = "answer-four"
     document.getElementById('answer-list').appendChild(answerFour)
 
     //Answer clicks...
@@ -123,25 +119,21 @@ var quizTwo =function() {
     var answerOne = document.createElement("button")
     answerOne.innerHTML = "1. quotes"
     answerOne.className = "answer"
-    answerOne.id = "answer-one"
     document.getElementById('answer-list').appendChild(answerOne)
 
     var answerTwo = document.createElement("button")
     answerTwo.innerHTML = "2. curly brackets"
     answerTwo.className = "answer"
-    answerTwo.id = "answer-two"
     document.getElementById('answer-list').appendChild(answerTwo)
 
     var answerThree = document.createElement("button")
     answerThree.innerHTML = "3. parenthesis"
     answerThree.className = "answer"
-    answerThree.id = "answer-three"
     document.getElementById('answer-list').appendChild(answerThree)
 
     var answerFour = document.createElement("button")
     answerFour.innerHTML = "4. square brackets"
     answerFour.className = "answer"
-    answerFour.id = "answer-four"
     document.getElementById('answer-list').appendChild(answerFour)
 
     // Answer clicks
@@ -204,25 +196,21 @@ var quizThree =function() {
     var answerOne = document.createElement("button")
     answerOne.innerHTML = "1. numbers and strings"
     answerOne.className = "answer"
-    answerOne.id = "answer-one"
     document.getElementById('answer-list').appendChild(answerOne)
 
     var answerTwo = document.createElement("button")
     answerTwo.innerHTML = "2. other arrays"
     answerTwo.className = "answer"
-    answerTwo.id = "answer-two"
     document.getElementById('answer-list').appendChild(answerTwo)
 
     var answerThree = document.createElement("button")
     answerThree.innerHTML = "3. booleans"
     answerThree.className = "answer"
-    answerThree.id = "answer-three"
     document.getElementById('answer-list').appendChild(answerThree)
 
     var answerFour = document.createElement("button")
     answerFour.innerHTML = "4. all of the above"
     answerFour.className = "answer"
-    answerFour.id = "answer-four"
     document.getElementById('answer-list').appendChild(answerFour)
 
     //Answer Clicks...
@@ -283,25 +271,21 @@ var quizFour =function() {
     var answerOne = document.createElement("button")
     answerOne.innerHTML = "1. commas"
     answerOne.className = "answer"
-    answerOne.id = "answer-one"
     document.getElementById('answer-list').appendChild(answerOne)
 
     var answerTwo = document.createElement("button")
     answerTwo.innerHTML = "2. curley brackets"
     answerTwo.className = "answer"
-    answerTwo.id = "answer-two"
     document.getElementById('answer-list').appendChild(answerTwo)
 
     var answerThree = document.createElement("button")
     answerThree.innerHTML = "3. quotes"
     answerThree.className = "answer"
-    answerThree.id = "answer-three"
     document.getElementById('answer-list').appendChild(answerThree)
 
     var answerFour = document.createElement("button")
     answerFour.innerHTML = "4. parenthesis"
     answerFour.className = "answer"
-    answerFour.id = "answer-four"
     document.getElementById('answer-list').appendChild(answerFour)
 
     // Answer Clicks...
@@ -366,25 +350,21 @@ var quizFive =function() {
     var answerOne = document.createElement("button")
     answerOne.innerHTML = "1. JavaScript"
     answerOne.className = "answer"
-    answerOne.id = "answer-one"
     document.getElementById('answer-list').appendChild(answerOne)
 
     var answerTwo = document.createElement("button")
     answerTwo.innerHTML = "2. terminal/bash"
     answerTwo.className = "answer"
-    answerTwo.id = "answer-two"
     document.getElementById('answer-list').appendChild(answerTwo)
 
     var answerThree = document.createElement("button")
     answerThree.innerHTML = "3. for loops"
     answerThree.className = "answer"
-    answerThree.id = "answer-three"
     document.getElementById('answer-list').appendChild(answerThree)
 
     var answerFour = document.createElement("button")
     answerFour.innerHTML = "4. console.log"
     answerFour.className = "answer"
-    answerFour.id = "answer-four"
     document.getElementById('answer-list').appendChild(answerFour)
 
 
@@ -479,12 +459,47 @@ const gameOver = function(){
 
     inputBtnEl.addEventListener('click', e=> {
         initials = document.getElementById('input-text').value
-        localStorage.setItem(initials, score)      
+        localStorage.setItem(initials, score)
+        section.remove()
+        highScores()      
     })    
 }
 
+const highScores = function(){
 
+    var section = document.createElement('section')
+    section.id = "section"
+    document.getElementById('container').appendChild(section)
 
+    var titleEl = document.createElement("div")
+    titleEl.innerHTML = "High Scores!"
+    titleEl.id = "question"
+    document.getElementById('section').appendChild(titleEl)
+
+    var listEl = document.createElement("div")
+    listEl.id = "score-list"
+    document.getElementById('section').appendChild(listEl)
+
+    var scoresEl = document.createElement("P")
+    scoresEl.innerHTML = "list of high scores"
+    scoresEl.id = "high-score"
+    document.getElementById('score-list').appendChild(scoresEl)
+
+    var buttonDiv = document.createElement("div")
+    buttonDiv.id = "button-div"
+    document.getElementById('section').appendChild(buttonDiv)
+
+    var goBack = document.createElement("button")
+    goBack.innerHTML = "Go Back"
+    goBack.className = "score-button"
+    document.getElementById('button-div').appendChild(goBack)
+
+    var clearHighScores = document.createElement("button")
+    clearHighScores.innerHTML = "Clear High Scores"
+    clearHighScores.className = "score-button"
+    document.getElementById('button-div').appendChild(clearHighScores)
+
+}
 
 
 
