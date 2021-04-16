@@ -6,27 +6,29 @@ const mainEl = document.getElementById('container')
 
 
 // time and score count
-let timeLeft = 5
-var score = timeleftEl
+let timeLeft = 75
+
 let rightOrWrong = ""
 
 // countdown timer function
-function timerCountdown() {
-    var timeInterval = setInterval(function(){
-    if (timeLeft >= 0) {
-        timeleftEl.textContent = timeLeft
-            timeLeft--
-        score = timeLeft.textContent
+
+timeObj = {
+    time: function timerCountdown() {
+        var timeInterval = setInterval(function(){
+
+        if (timeLeft >= 0) {
+            timeleftEl.textContent = timeLeft
+            timeLeft--} 
+
+        else {
+            clearInterval(timeInterval)
+            
+        }        
+
+
+        },
+        1000)}
     }
-    else {
-        clearInterval(timeInterval)
-        gameOver()        
-        var score = timeLeft + 1
-        console.log(score)   
-    }        
-    },
-    1000)
-}
 
 //Question 1 Fucntion
 var quizOne =function() {
@@ -73,6 +75,7 @@ var quizOne =function() {
     //wrong
     answerOne.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizTwo()
     })
@@ -80,6 +83,7 @@ var quizOne =function() {
     //wrong
     answerTwo.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizTwo()
     })
@@ -94,6 +98,7 @@ var quizOne =function() {
     //wrong
     answerFour.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizTwo()
     })
@@ -147,8 +152,12 @@ var quizTwo =function() {
     answerFour.id = "answer-four"
     document.getElementById('answer-list').appendChild(answerFour)
 
+    // Answer clicks
+
+    //wrong
     answerOne.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizThree()
     })
@@ -158,6 +167,7 @@ var quizTwo =function() {
     //wrong
     answerTwo.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizThree()
     })
@@ -172,6 +182,7 @@ var quizTwo =function() {
     //wrong
     answerFour.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizThree()
     })
@@ -227,6 +238,7 @@ var quizThree =function() {
     //wrong
     answerOne.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizFour()
     })
@@ -234,6 +246,7 @@ var quizThree =function() {
     //wrong
     answerTwo.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizFour()
     })
@@ -241,6 +254,7 @@ var quizThree =function() {
     //wrong
     answerThree.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizFour()
     })
@@ -305,6 +319,7 @@ var quizFour =function() {
     //wrong
     answerOne.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizFive()
     })
@@ -313,6 +328,7 @@ var quizFour =function() {
     //wrong
     answerTwo.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizFive()
     })
@@ -328,6 +344,7 @@ var quizFour =function() {
     //wrong
     answerFour.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         quizFive()
     })
@@ -386,6 +403,7 @@ var quizFive =function() {
     //wrong
     answerOne.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         gameOver()
     })
@@ -393,6 +411,7 @@ var quizFive =function() {
     //wrong
     answerTwo.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         gameOver()
     })
@@ -400,6 +419,7 @@ var quizFive =function() {
     //wrong
     answerThree.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeLeft = timeLeft - 10
         section.remove()
         gameOver()
     })
@@ -414,8 +434,10 @@ var quizFive =function() {
 }
 
 // Game over function
-var gameOver = function(){    
-    section.remove()
+const gameOver = function(){ 
+        
+    timeLeft = timeLeft + 1
+    console.log(timeLeft)
 }
 
 
@@ -425,7 +447,7 @@ var gameOver = function(){
 
 // Start Game button
 startBtnEl.addEventListener('click', e => {
-    timerCountdown()
+    timeObj.time()
     startBtnEl.remove()
     sectionEL.remove()
     quizOne()
