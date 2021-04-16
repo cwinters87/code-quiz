@@ -40,6 +40,22 @@ header h1 {
     flex-wrap: wrap;
     font-size: 50px;
     font-weight: bold;
+    justify-content: center;
+}
+
+main section div h1 {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+main section div p {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
 }
 
 #answer-list {
@@ -65,4 +81,13 @@ header h1 {
     font-size: 25px;
     background-color: purple;
     border-radius: 7px;
+}
+
+#bottom {
+    color: lightgray;
+    font-size: 25px;
+    text-align: center;
+    border-top-style: solid;
+    border-radius: 5px;
+    padding: 5px 25%;
 }
