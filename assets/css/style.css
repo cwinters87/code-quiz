@@ -91,3 +91,33 @@ main section div p {
     border-radius: 5px;
     padding: 5px 25%;
 }
+
+#final-score {
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
+
+}
+
+#div-of-three {
+    display: flex;
+    padding: 10px 0px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#enter-initials {
+    padding: 0px 10px 0px 0px;
+}
+
+#input-text {
+    padding: 0px 10px;
+}
+
+#input-btn {
+    padding: 0px 10px;
+    margin: 0px 10px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+}

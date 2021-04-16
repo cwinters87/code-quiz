@@ -15,19 +15,12 @@ let rightOrWrong = ""
 timeObj = {
     time: function timerCountdown() {
         var timeInterval = setInterval(function(){
-
         if (timeLeft >= 0) {
             timeleftEl.textContent = timeLeft
             timeLeft--} 
-
         else {
-            clearInterval(timeInterval)
-            
-        }        
-
-
-        },
-        1000)}
+            clearInterval(timeInterval)}        
+        },1000)}
     }
 
 //Question 1 Fucntion
@@ -435,8 +428,56 @@ var quizFive =function() {
 
 // Game over function
 const gameOver = function(){ 
-        
+
     timeLeft = timeLeft + 1
+
+    var section = document.createElement('section')
+    section.id = "section"
+    document.getElementById('container').appendChild(section)
+
+    var allDone = document.createElement("div")
+    allDone.innerHTML = "All done!"
+    allDone.id = "question"
+    document.getElementById('section').appendChild(allDone)
+
+    var answerList = document.createElement("div")
+    answerList.id = "answer-list"
+    document.getElementById('section').appendChild(answerList)
+
+    var scoreEl = document.createElement("div")
+    scoreEl.innerHTML = "Your final score is " + timeLeft + "."
+    scoreEl.className = "final-score-item"
+    scoreEl.id = "final-score"
+    document.getElementById('answer-list').appendChild(scoreEl)
+
+    var divOfThree = document.createElement("div")    
+    divOfThree.id = "div-of-three"
+    document.getElementById('answer-list').appendChild(divOfThree)
+
+    var enterInitialsEl = document.createElement("div")
+    enterInitialsEl.innerHTML = "Enter intials:"
+    enterInitialsEl.className = "input-score"
+    enterInitialsEl.id = "enter-initials"
+    document.getElementById('div-of-three').appendChild(enterInitialsEl)
+
+    var inputEl = document.createElement("input")    
+    inputEl.className = "input-score"
+    inputEl.id = "input-text"
+    document.getElementById('div-of-three').appendChild(inputEl)
+
+    var inputBtnEl = document.createElement("button")
+    inputBtnEl.innerHTML = "Submit"
+    inputBtnEl.className = "input-score"
+    inputBtnEl.id = "input-btn"
+    document.getElementById('div-of-three').appendChild(inputBtnEl)
+
+    var bottom = document.createElement("div")
+    bottom.innerHTML = rightOrWrong
+    bottom.id = "bottom"
+    document.getElementById('section').appendChild(bottom)
+
+    
+    
     console.log(timeLeft)
 }
 
