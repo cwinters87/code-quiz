@@ -4,9 +4,14 @@ header {
     justify-content: space-between;
 }
 
-header h1 {
+#view-scores {
     color: pink;
     margin: 20px;
+    text-decoration: none;
+}
+
+#view-scores:hover {
+    color: purple;
 }
 
 .time-text {
@@ -71,7 +76,11 @@ main section div p {
     color: white;
     border-radius: 7px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
+}
+
+.answer:hover {
+    background-color: lightpink;
 }
 
 #start-btn {
@@ -81,6 +90,10 @@ main section div p {
     font-size: 25px;
     background-color: purple;
     border-radius: 7px;
+}
+
+#start-btn:hover {
+    background-color: lightpink;
 }
 
 #bottom {
@@ -122,6 +135,10 @@ main section div p {
     border-radius: 5px;
 }
 
+#input-btn:hover {
+    background-color: grey;
+}
+
 #button-div {
     display: flex;
 }
@@ -129,10 +146,21 @@ main section div p {
 .score-button{
     font-size: 25px;
     padding: 0px 10px;
-    margin: 10px 20px 0px 0px;
+    margin: 10px 50px 0px 0px;
     color: white;
     background-color: black;
     border-radius: 5px;
+}
+
+.score-button:hover {
+    background-color: grey;
+}
+
+#high-score {
+    font-size: 30px;
+    background-color: lightgray;
+    padding: 5px 25px 5px 5px;
+    border-radius: 7px;
 }
 
 button {

@@ -3,13 +3,14 @@ const timeleftEl = document.querySelector('.countdown-timer')
 const startBtnEl = document.querySelector('#start-btn')
 const sectionEL = document.querySelector('#section')
 const mainEl = document.getElementById('container')
+const viewScoresEl = document.getElementById('view-scores')
 
 
 // time and score count
 let timeLeft = 75
 let initials = ""
 let rightOrWrong = ""
-
+let highScoresArr = []
 
 
 // countdown timer function
@@ -376,6 +377,7 @@ var quizFive =function() {
     answerOne.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
         timeLeft = timeLeft - 10
+        timeleftEl.style.visibility = "hidden"
         section.remove()
         gameOver()
     })
@@ -383,6 +385,7 @@ var quizFive =function() {
     //wrong
     answerTwo.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeleftEl.style.visibility = "hidden"
         timeLeft = timeLeft - 10
         section.remove()
         gameOver()
@@ -391,6 +394,7 @@ var quizFive =function() {
     //wrong
     answerThree.addEventListener("click", e => {
         rightOrWrong = "Wrong!"
+        timeleftEl.style.visibility = "hidden"
         timeLeft = timeLeft - 10
         section.remove()
         gameOver()
@@ -398,7 +402,8 @@ var quizFive =function() {
 
     //right
     answerFour.addEventListener("click", e => {
-        rightOrWrong = "Right!"        
+        rightOrWrong = "Right!"
+        timeleftEl.style.visibility = "hidden"        
         section.remove()
         gameOver()
     })
@@ -459,14 +464,21 @@ const gameOver = function(){
     bottom.id = "bottom"
     document.getElementById('section').appendChild(bottom)
 
+    // button save initials and score to local storage and launch last page
     inputBtnEl.addEventListener('click', e=> {
-        initials = document.getElementById('input-text').value        
-        localStorage.setItem(initials, score)
+        initials = document.getElementById('input-text').value
+        var scoreObj = {
+            finalInitials: initials,
+            finalScore: score
+            }
+        highScoresArr.push(scoreObj)
+        localStorage.setItem("scores", JSON.stringify(highScoresArr))
         section.remove()
         highScores()
     })    
 }
 
+// High Score page
 const highScores = function(){
 
     var section = document.createElement('section')
@@ -483,7 +495,7 @@ const highScores = function(){
     document.getElementById('section').appendChild(listEl)
 
     var scoresEl = document.createElement("P")
-    scoresEl.innerHTML = "list of high scores"
+    scoresEl.innerHTML = ""
     scoresEl.id = "high-score"
     document.getElementById('score-list').appendChild(scoresEl)
 
@@ -501,18 +513,33 @@ const highScores = function(){
     clearHighScores.className = "score-button"
     document.getElementById('button-div').appendChild(clearHighScores)
 
+    // get initials and scores from local storage
+    var highScoresDisplay = JSON.parse(localStorage.getItem('scores'))
+    console.log(highScoresDisplay)
+    console.log(highScoresDisplay[0])
+    console.log(highScoresDisplay[1])
+
+    document.getElementById('high-score').innerHTML = highScoresDisplay[0].finalInitials + "   -   " + highScoresDisplay[0].finalScore
+
+    //go back button
+    goBack.addEventListener('click', e => {
+        window.location.reload()
+    })
     
-    var topScoresArr = Object.entries(localStorage)
-    console.log(topScoresArr)
-    let allScores = []
-    allScores.push(topScoresArr)
-    console.log(allScores)
+    //clear scores button
+    clearHighScores.addEventListener('click', e => {
+        localStorage.clear()
+        document.getElementById('high-score').innerHTML = "--scores reset--"
+    })
 }
 
-
-
-
-
+//view scores page
+viewScoresEl.addEventListener('click', e => {
+    sectionEL.remove()
+    startBtnEl.remove()
+    timeleftEl.style.visibility = "hidden"
+    highScores()
+})
 
 // Start Game button
 startBtnEl.addEventListener('click', e => {
