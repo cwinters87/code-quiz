@@ -405,12 +405,12 @@ var quizFive =function() {
         rightOrWrong = "Right!"
         timeleftEl.style.visibility = "hidden"        
         section.remove()
-        gameOver()
+        gameOver(e)
     })
 }
 
 // Game over function
-const gameOver = function(){ 
+const gameOver = function(){
 
     timeLeft = timeLeft + 1
     var finalTime = timeLeft
